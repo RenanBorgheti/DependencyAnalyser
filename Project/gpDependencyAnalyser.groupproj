@@ -1,0 +1,48 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{394AD283-FDF8-4E28-AC09-924AE496EC6B}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="DependencyAnalyser.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="pctTeste01.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="DependencyAnalyser">
+        <MSBuild Projects="DependencyAnalyser.dproj"/>
+    </Target>
+    <Target Name="DependencyAnalyser:Clean">
+        <MSBuild Projects="DependencyAnalyser.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="DependencyAnalyser:Make">
+        <MSBuild Projects="DependencyAnalyser.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="pctTeste01">
+        <MSBuild Projects="pctTeste01.dproj"/>
+    </Target>
+    <Target Name="pctTeste01:Clean">
+        <MSBuild Projects="pctTeste01.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="pctTeste01:Make">
+        <MSBuild Projects="pctTeste01.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="DependencyAnalyser;pctTeste01"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="DependencyAnalyser:Clean;pctTeste01:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="DependencyAnalyser:Make;pctTeste01:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>
