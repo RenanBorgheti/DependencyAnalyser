@@ -2,13 +2,15 @@ program DependencyAnalyser;
 
 uses
   Vcl.Forms,
-  unPrincipal in '..\Source\unPrincipal.pas' {FormPrincipal};
+  SimpleGraph in '..\Source\SimpleGraph.pas',
+  UnPrincipal in '..\Source\UnPrincipal.pas' {FormPrincipal};
 
 {$R *.res}
 
 begin
   Application.Initialize;
   Application.MainFormOnTaskbar := True;
+  Application.CreateForm(TFormPrincipal, FormPrincipal);
   Application.CreateForm(TFormPrincipal, FormPrincipal);
   Application.Run;
 end.
